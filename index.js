@@ -28,11 +28,6 @@ class Histogram {
             let count = this.letterCounts.get(character); 
             this.letterCounts.set(character, count + 1);    
             this.totalLetters++;
-            console.log(count);
-            console.log(this.letterCounts);
-            console.log(this.totalLetters);
-
-            console.log("------------------------");
         }
 
     }
@@ -40,6 +35,8 @@ class Histogram {
     toString() {
         let entries = [...this.letterCounts];
                 console.log(entries);
+                console.log("Salida");
+                
 
         entries.sort((a,b) => {              
             if (b[1] === a[1]) {            
@@ -48,16 +45,28 @@ class Histogram {
                 return a[1] - b[1];          
             }
         });
+        console.log(entries);
+        console.log("Organizando");
+        
 
         for(let entry of entries) {
             entry[1] = entry[1] / this.totalLetters*100;
         }
+        console.log(entries);
+        console.log("%%");
+        
 
         entries = entries.filter(entry => entry[1] >= 1);
+        console.log(entries);
+        console.log("Filter");
+        
 
         let lines = entries.map(
             ([l,n]) => `${l}: ${"-".repeat(Math.round(n))} ${n.toFixed(2)}%`
         );
+        console.log(entries);
+        console.log("Salida Final");
+        
 
         return lines.join("\n");
     }
