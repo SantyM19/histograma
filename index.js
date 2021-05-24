@@ -42,10 +42,10 @@ class Histogram {
                 console.log(entries);
 
         entries.sort((a,b) => {              
-            if (a[1] === b[1]) {            
-                return a[0] < b[0] ? -1 : 1; 
+            if (b[1] === a[1]) {            
+                return b[0] < a[0] ? -1 : 1; 
             } else {                         
-                return b[1] - a[1];          
+                return a[1] - b[1];          
             }
         });
 
@@ -56,7 +56,7 @@ class Histogram {
         entries = entries.filter(entry => entry[1] >= 1);
 
         let lines = entries.map(
-            ([l,n]) => `${l}: ${"#".repeat(Math.round(n))} ${n.toFixed(2)}%`
+            ([l,n]) => `${l}: ${"-".repeat(Math.round(n))} ${n.toFixed(2)}%`
         );
 
         return lines.join("\n");
